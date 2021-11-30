@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\categoriesController;
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,3 +52,13 @@ Route::get('cards', function () {
 Route::get('charts', function () {
     return view('charts');
 });
+// Routing of the categories
+Route::get('categories', [categoriesController::class,'index'])->name('categories');
+Route::post('categories', [categoriesController::class,'store']);
+Route::get('categories/delete/{id}', [categoriesController::class,'destroy']);
+Route::get('categories/status/{id}', [categoriesController::class,'show']);
+Route::get('categories/update/{id}', [categoriesController::class,'edit']);
+Route::post('categories/update', [categoriesController::class,'update']);
+
+
+
